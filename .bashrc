@@ -8,6 +8,7 @@ alias gpu='git push'
 alias gr='git remove'
 alias gs='git status'
 alias c='clear'
+alias l='ls -lah'
 
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_rsa
