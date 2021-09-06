@@ -1,5 +1,5 @@
-function skynet {
-    ssh ajf@anthonyfontanez.com
+function dismclean {
+    Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 }
 
 function gita {
@@ -35,8 +35,9 @@ function gits {
     git status
 }
 
-C:\Windows\System32\OpenSSH\ssh-add.exe C:\Users\ajf\.ssh\id_rsa
+function skynet {
+    ssh ajf@anthonyfontanez.com
+}
 
-Set-Location -Path C:\Users\ajf\Git\
-
+Set-Location -Path C:\AJF8729\Git\
 Clear-Host
