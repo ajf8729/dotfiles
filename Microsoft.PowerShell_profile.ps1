@@ -39,5 +39,10 @@ function skynet {
     ssh ajf@anthonyfontanez.com
 }
 
+function unlockwu {
+    Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\ -Name UseWUServer -Value 0
+    Restart-Service -Name wuauserv
+}
+
 Set-Location -Path C:\AJF8729\Git\
 Clear-Host
