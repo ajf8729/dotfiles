@@ -44,6 +44,10 @@ function unlockwu {
     Restart-Service -Name wuauserv
 }
 
+function Update-Profile {
+    Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ajf8729/dotfiles/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
+}
+
 Set-Location -Path C:\AJF8729\Git\
 Set-PSReadLineOption -PredictionSource History
 Clear-Host
