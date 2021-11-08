@@ -46,6 +46,7 @@ function unlockwu {
 
 function Update-Profile {
     Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ajf8729/dotfiles/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
+    .$PROFILE
 }
 
 Set-Location -Path C:\AJF8729\Git\
