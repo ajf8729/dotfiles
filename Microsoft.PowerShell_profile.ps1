@@ -45,4 +45,5 @@ function unlockwu {
 }
 
 Set-Location -Path C:\AJF8729\Git\
+Set-PSReadLineOption -PredictionSource History
 Clear-Host
