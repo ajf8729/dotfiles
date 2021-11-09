@@ -50,5 +50,9 @@ function Update-Profile {
 }
 
 Set-Location -Path C:\AJF8729\Git\
-Set-PSReadLineOption -PredictionSource History
+
+if ($PSVersionTable.PSVersion -eq "7.2.0") {
+    Set-PSReadLineOption -PredictionSource History
+}
+
 Clear-Host
