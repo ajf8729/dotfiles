@@ -4,16 +4,15 @@ function dismclean {
 
 function gita {
     Param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$File
     )
-
     git add $File
 }
 
 function gitc {
     Param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$Message
     )
     git commit -m $Message
@@ -39,20 +38,19 @@ function skynet {
     ssh ajf@anthonyfontanez.com
 }
 
-function unlockwu {
-    Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\ -Name UseWUServer -Value 0
-    Restart-Service -Name wuauserv
-}
-
 function Update-Profile {
     Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ajf8729/dotfiles/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
     .$PROFILE
 }
 
-Set-Location -Path C:\AJF8729\Git\
+switch ($env:COMPUTERNAME) {
+    'ED-209' {Set-Location -Path 'D:\AJF8729\Git'}
+    default {Set-Location -Path 'C:\Users\ajf\Git'}
+}
 
-if ($PSVersionTable.PSVersion -eq "7.2.0") {
+if ($PSVersionTable.PSVersion -eq '7.2.0') {
     Set-PSReadLineOption -PredictionSource History
 }
 
 Clear-Host
+Get-ChildItem -Path *\*
