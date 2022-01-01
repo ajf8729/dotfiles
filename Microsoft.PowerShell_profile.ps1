@@ -52,7 +52,7 @@ switch ($env:COMPUTERNAME) {
     default {Set-Location -Path 'C:\Users\ajf\Git'}
 }
 
-if ($PSVersionTable.PSVersion -eq '7.2.0') {
+if ($PSVersionTable.PSVersion -ge '7.2.0') {
     Set-PSReadLineOption -PredictionSource History
 }
 
