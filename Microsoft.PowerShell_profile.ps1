@@ -38,6 +38,10 @@ function skynet {
     ssh ajf@anthonyfontanez.com
 }
 
+function Optimize-OfflineVHDs {
+    Get-VM | Where-Object {$_.State -eq 'Off'} | Get-VMHardDiskDrive | ForEach-Object {Optimize-VHD -Path $_.Path -Mode Quick -Verbose}
+}
+
 function Update-Profile {
     Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ajf8729/dotfiles/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
     .$PROFILE
