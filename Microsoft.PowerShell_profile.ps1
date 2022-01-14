@@ -49,6 +49,7 @@ function Update-Profile {
 
 switch ($env:COMPUTERNAME) {
     'ED-209' {Set-Location -Path 'D:\AJF8729\Git'}
+    'AJF8729' {Set-Location -Path 'D:\AJF8729\Git'}
     default {Set-Location -Path 'C:\Users\ajf\Git'}
 }
 
