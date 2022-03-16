@@ -39,7 +39,16 @@ function skynet {
 }
 
 function Optimize-OfflineVHDs {
-    Get-VM | Where-Object {$_.State -eq 'Off'} | Get-VMHardDiskDrive | ForEach-Object {Optimize-VHD -Path $_.Path -Mode Quick -Verbose}
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory = $True)]
+        [ValidateSet(
+            'Quick',
+            'Full'
+        )]
+        [string]$Mode
+    )
+    Get-VM | Where-Object {$_.State -eq 'Off'} | Get-VMHardDiskDrive | ForEach-Object {Optimize-VHD -Path $_.Path -Mode $Mode -Verbose:($PSBoundParameters['Verbose'] -eq $true)}
 }
 
 function Update-Profile {
@@ -48,7 +57,6 @@ function Update-Profile {
 }
 
 switch ($env:COMPUTERNAME) {
-    'ED-209' {Set-Location -Path 'D:\AJF8729\Git'}
     'AJF8729' {Set-Location -Path 'D:\AJF8729\Git'}
     default {Set-Location -Path 'C:\Users\ajf\Git'}
 }
