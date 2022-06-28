@@ -34,8 +34,24 @@ function gits {
     git status
 }
 
+function rdns {
+    Param(
+        [Parameter(Mandatory = $true)]
+        [string]$Data
+    )
+    Resolve-DnsName $Data
+}
+
 function skynet {
     ssh ajf@anthonyfontanez.com
+}
+
+function pki {
+    ssh ajf@pki.ajf8729.com
+}
+
+function wiki {
+    ssh ajf@wiki.winadmins.io
 }
 
 function Optimize-OfflineVHDs {
@@ -52,17 +68,13 @@ function Optimize-OfflineVHDs {
 }
 
 function Update-Profile {
-    Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ajf8729/dotfiles/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
+    Invoke-WebRequest -UseBasicParsing -Uri http://bit.ly/ajf8729ps -OutFile $PROFILE
     .$PROFILE
 }
 
 switch ($env:COMPUTERNAME) {
     'AJF8729' {Set-Location -Path 'D:\AJF8729\Git'}
     default {Set-Location -Path 'C:\Users\ajf\Git'}
-}
-
-if ($PSVersionTable.PSVersion -ge '7.2.0') {
-    Set-PSReadLineOption -PredictionSource History
 }
 
 Clear-Host
