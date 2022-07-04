@@ -77,5 +77,7 @@ switch ($env:COMPUTERNAME) {
     default {Set-Location -Path 'C:\Users\ajf\Git'}
 }
 
+Set-PSReadLineOption -PredictionViewStyle ListView
+
 Clear-Host
 Get-ChildItem -Path *\*
