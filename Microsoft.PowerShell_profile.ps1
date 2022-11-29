@@ -46,8 +46,8 @@ function skynet {
     ssh ajf@anthonyfontanez.com
 }
 
-function pki {
-    ssh ajf@pki.ajf8729.com
+function toolbox {
+    ssh ajf@toolbox.ajf.one
 }
 
 function wiki {
@@ -80,4 +80,3 @@ switch ($env:COMPUTERNAME) {
 Set-PSReadLineOption -PredictionViewStyle ListView
 
 Clear-Host
-Get-ChildItem -Path *\*
