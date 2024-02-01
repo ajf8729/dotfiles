@@ -2,6 +2,25 @@ function dismclean {
     Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 }
 
+function e {
+    exit
+}
+
+function Get-PatchTuesday {
+    $Month = Get-Date -Format 'MMMM'
+    switch ((Get-Date -Day 1).DayOfWeek) {
+        'Tuesday'   {return "Patch Tuesday is on $Month 8th"}
+        'Monday'    {return "Patch Tuesday is on $Month 9th"}
+        'Sunday'    {return "Patch Tuesday is on $Month 10th"}
+        'Saturday'  {return "Patch Tuesday is on $Month 11th"}
+        'Friday'    {return "Patch Tuesday is on $Month 12th"}
+        'Thursday'  {return "Patch Tuesday is on $Month 13th"}
+        'Wednesday' {return "Patch Tuesday is on $Month 14th"}
+    }
+}
+
+New-Alias -Name gpt -Value Get-PatchTuesday
+
 function gita {
     Param(
         [Parameter(Mandatory = $true)]
@@ -32,6 +51,10 @@ function gitpu {
 
 function gits {
     git status
+}
+
+function p {
+    .$PROFILE
 }
 
 function rdns {
@@ -80,3 +103,5 @@ switch ($env:COMPUTERNAME) {
 Set-PSReadLineOption -PredictionViewStyle ListView
 
 Clear-Host
+
+Get-VM | Where-Object -FilterScript {$_.State -eq 'Running'} | Sort-Object -Property Name
